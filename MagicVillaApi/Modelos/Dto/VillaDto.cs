@@ -20,5 +20,7 @@ namespace MagicVillaApi.Modelos.Dto
         public string ImageUrl { get; set; }
 
         public string Amenidad { get; set; }
+
+        //public DateTime FechaActualizacion { get; set; }
     }
 }
