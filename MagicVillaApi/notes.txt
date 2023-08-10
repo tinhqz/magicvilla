@@ -1,0 +1,17 @@
+﻿Proceso para una migracion:
+
+1. Crear un nuevo modelo:
+	NumeroVilla.cs con sus respectivos DataAnotations
+2. Crear los DTO:
+	NumeroVillaDto, NumeroVillaCreateDTO, NumeroVillaUpdateDTO, 
+3. Crear el mapeo de las clases con AutoMapper:
+	CreateMap<NumeroVilla, NumeroVillaCreateDto>().ReverseMap();
+4. Agregar el DbSet en el DbContext:
+	public DbSet<NumeroVilla> NumeroVillas { get; set; }
+5. Agregar la migracion:
+	a) Desde la consola de nuget: add-migration AgregarNumeroVillaTabla
+	b) Desde la consola de nuget: update-database
+6. Crear la interfaz: INumeroVillaRepositorio
+7. Implementar la interfaz en el repositorio: NumeroVillasRepositorio
+8. Agregar el servicio en el Program.cs
+	builder.Services.AddScoped<INumeroVillaRepositorio, NumeroVillaRepositorio>();

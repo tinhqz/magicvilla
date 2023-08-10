@@ -1,5 +1,7 @@
 using MagicVillaApi;
 using MagicVillaApi.Datos;
+using MagicVillaApi.Repositorio;
+using MagicVillaApi.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 // configurando el automapper, indicamos cual es la clase que tiene el mapeo de objetos
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+// agregando repositorios
+builder.Services.AddScoped<IVillaRepositorio, VillaRepositorio>();
+builder.Services.AddScoped<INumeroVillaRepositorio, NumeroVillaRepositorio>();
 
 var app = builder.Build();
 
